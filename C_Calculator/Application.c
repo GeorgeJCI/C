@@ -21,9 +21,7 @@ void calc(int *num1, int *num2, int *result, char *operator){
     printf("Enter sum eg (2 + 2):");
     scanf("%d %c %d", num1,operator,num2);
 }
-
-int main(){
-
+void mainCalc(){
     int val1;
     int val2;
     char oper;
@@ -33,19 +31,28 @@ int main(){
     switch (oper) {
         case '+':
             addition(val1, val2, &final);
+            mainCalc();
             break;
         case '-':
             subtraction(val1, val2, &final);
+            mainCalc();
             break;
         case '*':
             multi(val1, val2, &final);
+            mainCalc();
             break;
         case '/':
             div(val1, val2, &final);
+            mainCalc();
             break;
         default:
             printf("Invalid operator entered.\n");
     }
+}
+
+int main(){
+
+    mainCalc();
 
     return 0;
 }
